@@ -6,6 +6,12 @@
 # 2011-03-13->05-04
 # vers. 0.8
 #
+#p
+# interp_dens.cpp
+# revised by Jingren Zhou - www.zhoujingrenscu@scu.edu.cn
+# 2022-02-1
+# Make minor revision which could bing compile errors.
+#
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as published
 # by the Free Software Foundation, either version 2 of the License, or
@@ -24,7 +30,8 @@
 #include <sstream>
 #include <vector>
 #include <math.h>
-
+#include <time.h>
+#include <algorithm>
 
 
 using namespace std;
@@ -195,10 +202,9 @@ int main ()
 
     // read file header
     getline(infile, rec_line);
-
-    while (!infile.eof())
+    getline(infile, rec_line);
+    while (getline(infile, rec_line))
     {
-        getline(infile, rec_line);
         if (rec_line.size() > 0)
         {
             rawdata_list.push_back(rec_line);
